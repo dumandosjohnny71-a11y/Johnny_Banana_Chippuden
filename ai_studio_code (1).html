@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johnny Banana Chipuden | Premium Banana Chips</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* 8. DESIGN AND BRANDING: Colors & Fonts */
+        :root {
+            --primary-yellow: #FFD700;
+            --chip-brown: #5D4037;
+            --leaf-green: #4CAF50;
+            --bg-light: #FFFCF2;
+            --text-dark: #333;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+
+        /* 6 & 7. NAVIGATION & RESPONSIVE DESIGN */
+        nav {
+            background: var(--white);
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .logo-area img { height: 50px; border-radius: 50%; }
+        .logo-area span { font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: var(--chip-brown); }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--chip-brown); font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .nav-links a:hover { color: var(--leaf-green); }
+
+        .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: var(--chip-brown); }
+
+        /* Mobile Menu */
+        @media (max-width: 900px) {
+            .nav-links {
+                position: fixed; right: -100%; top: 80px; background: var(--white);
+                flex-direction: column; width: 100%; text-align: center;
+                padding: 40px 0; transition: 0.5s; box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { right: 0; }
+            .hamburger { display: block; }
+        }
+
+        /* 1. HOMEPAGE & BANNER */
+        section { display: none; padding: 100px 10% 60px; min-height: 100vh; animation: fadeIn 0.5s ease; }
+        section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=1200');
+            background-size: cover; background-position: center;
+            height: 450px; border-radius: 20px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; color: white; text-align: center; padding: 20px;
+        }
+        .hero-banner h1 { font-family: 'Fredoka One'; font-size: 3rem; margin-bottom: 10px; }
+        .cta-btn { 
+            background: var(--primary-yellow); color: var(--chip-brown); 
+            padding: 12px 30px; border-radius: 50px; text-decoration: none; 
+            font-weight: bold; margin-top: 20px; transition: 0.3s; border: none; cursor: pointer;
+        }
+        .cta-btn:hover { transform: scale(1.1); background: var(--white); }
+
+        /* 2. ABOUT PAGE */
+        .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-content h2 { font-family: 'Fredoka One'; font-size: 2.5rem; color: var(--chip-brown); margin-bottom: 20px; }
+
+        /* 3. PRODUCTS PAGE */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; padding-bottom: 20px; }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card h3 { margin: 15px 0; font-family: 'Fredoka One'; }
+        .price { color: var(--leaf-green); font-weight: bold; font-size: 1.2rem; }
+
+        /* 4. GALLERY */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+        .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; transition: 0.3s; }
+        .gallery-grid img:hover { transform: scale(1.05); cursor: pointer; }
+
+        /* 5. CONTACT PAGE */
+        .contact-container { display: flex; flex-wrap: wrap; gap: 40px; margin-top: 30px; }
+        .contact-form { flex: 1; min-width: 300px; background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .contact-info { flex: 1; min-width: 300px; }
+        .map-placeholder { width: 100%; height: 250px; background: #eee; border-radius: 15px; margin-top: 20px; overflow: hidden; }
+
+        footer { text-align: center; padding: 40px; background: var(--chip-brown); color: white; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <!-- 6. NAVIGATION MENU -->
+    <nav>
+        <div class="logo-area" onclick="showPage('home')">
+            <img src="https://cdn-icons-png.flaticon.com/512/1135/1135544.png" alt="Logo">
+            <span>Johnny Banana Chipuden</span>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <div class="nav-links" id="navLinks">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About</a>
+            <a onclick="showPage('products')">Products</a>
+            <a onclick="showPage('gallery')">Gallery</a>
+            <a onclick="showPage('contact')">Contact</a>
+        </div>
+    </nav>
+
+    <!-- 1. HOMEPAGE -->
+    <section id="home" class="active">
+        <div class="hero-banner">
+            <h1>Freshly Sliced. Perfectly Crunchy.</h1>
+            <p>Welcome to Johnny Banana Chipuden - The Home of authentic Banana Chips.</p>
+            <button class="cta-btn" onclick="showPage('products')">Order Now</button>
+        </div>
+        <div style="margin-top: 50px; text-align: center;">
+            <h2>Welcome, Customer!</h2>
+            <p>Experience the finest banana snacks made with love and tradition.</p>
+        </div>
+    </section>
+
+    <!-- 2. ABOUT PAGE -->
+    <section id="about">
+        <div class="about-content">
+            <h2>Our Banana Story</h2>
+            <p>Johnny Banana Chipuden started with a simple vision: to create the world's best banana chips. Because our business is 100% focused on <b>Bananas</b>, we ensure that every slice is perfect.</p>
+            <br>
+            <p>Our purpose is to provide a healthy, crunchy, and delicious alternative to mass-produced snacks. We support local farmers and use only organic cardava bananas.</p>
+        </div>
+    </section>
+
+    <!-- 3. PRODUCTS PAGE -->
+    <section id="products">
+        <h2 style="text-align: center; font-family: 'Fredoka One';">Our Products</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1623351239845-666352c3c621?q=80&w=400" alt="Classic">
+                <h3>Classic Sweet</h3>
+                <p>Glazed with natural sugar cane.</p>
+                <p class="price">₱45.00</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=400" alt="Salted">
+                <h3>Savory Salted</h3>
+                <p>Perfectly balanced sea salt.</p>
+                <p class="price">₱45.00</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1481349570273-d59f6271811c?q=80&w=400" alt="Spicy">
+                <h3>Spicy Barbecue</h3>
+                <p>A kick of heat in every crunch.</p>
+                <p class="price">₱50.00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. GALLERY -->
+    <section id="gallery">
+        <h2 style="text-align: center; font-family: 'Fredoka One'; margin-bottom: 30px;">Our Gallery</h2>
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1528821128474-27f963b062bf?q=80&w=300" alt="G1">
+            <img src="https://images.unsplash.com/photo-1550828521-4cb4440559b1?q=80&w=300" alt="G2">
+            <img src="https://images.unsplash.com/photo-1594489428504-5c0c480a15fd?q=80&w=300" alt="G3">
+            <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=300" alt="G4">
+            <img src="https://images.unsplash.com/photo-1623351239845-666352c3c621?q=80&w=300" alt="G5">
+            <img src="https://images.unsplash.com/photo-1481349570273-d59f6271811c?q=80&w=300" alt="G6">
+        </div>
+    </section>
+
+    <!-- 5. CONTACT PAGE -->
+    <section id="contact">
+        <h2 style="text-align: center; font-family: 'Fredoka One';">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form id="myBtn" onsubmit="event.preventDefault(); alert('Message Sent Successfully!');">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="cta-btn" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>Contact Details</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Banana St, Chipuden City</p>
+                <p><i class="fas fa-phone"></i> +63 912 345 6789</p>
+                <p><i class="fas fa-envelope"></i> hello@johnnybanana.com</p>
+                <br>
+                <a href="https://facebook.com" target="_blank" style="font-size: 2rem; color: #1877F2; text-decoration: none;">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <div class="map-placeholder">
+                    <!-- Placeholder for Map -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.123456789!2d120.9842!3d14.5995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDM1JzU4LjIiTiAxMjDCsDU5JzAzLjEiRQ!5e0!3m2!1sen!2sph!4v1620000000000!5m2!1sen!2sph" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Johnny Banana Chipuden. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 9. FUNCTIONALITY (JavaScript) -->
+    <script>
+        // Page Switching Logic
+        function showPage(pageId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Show target section
+            document.getElementById(pageId).classList.add('active');
+
+            // Close mobile menu
+            document.getElementById('navLinks').classList.remove('active');
+
+            // Scroll to top
+            window.scrollTo(0,0);
+        }
+
+        // Hamburger Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close ad if it exists (Bonus)
+        window.onclick = function(event) {
+            const ad = document.getElementById('adModal');
+            if (event.target == ad) {
+                ad.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
